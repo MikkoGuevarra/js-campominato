@@ -9,7 +9,17 @@
 // 2 = l'intervallo di numeri possibili è tra 1 e 50
 // In ogni caso, le mine sono sempre 16.
 
-var maxNumber = 100;
+var maxNumber = 0;
+
+var level = parseInt(prompt("Scegli tra 0 1 2 il livello di difficoltà"));
+if (level == 2) {
+    maxNumber = 50;
+
+} else if (level == 1) {
+    maxNumber = 80;
+} else {
+    maxNumber = 100;
+}
 var numberOfBombs = 16;
 var bombContainer =  [];
 var bomb;
