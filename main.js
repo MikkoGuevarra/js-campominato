@@ -38,14 +38,20 @@ while (bombContainer.length < numberOfBombs) {
  //creo ciclo per scelta numero utente
  do {
     userChoice = parseInt(prompt("inserisci un numero"));
-    if (bombContainer.includes(userChoice)) {
+    if (bombContainer.includes(userChoice)) {     // condizione se la scelta dell'utente è una mina ==>> la bomba è trovata
         isBombFind = true;
-        alert("the bomb is find");
+
+        alert("the bomb is find and you have gained " + myPositions.length + " points");
+        // altrimenti controlla  se la scelta non è nell'array gia scelto se non è presente pusha nello stesso array
     } else if (!myPositions.includes(userChoice)) {
         myPositions.push(userChoice);
-    } else {
+    } else { // se è gia nell'array comunica che la sua scelta è già presente quindi di mettere un altro numero
         alert("You have already inserted this number, pls insert another one");
     }
 
-} while (isBombFind == false);
+} while (isBombFind == false && myPositions.length < maxGames);
 console.log(myPositions);
+// controllo per vedere se l'utente ha vinto
+if (myPositions.length == maxGames) {
+    alert("You Won and gained " + myPositions.length + " points")
+}
