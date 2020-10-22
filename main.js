@@ -17,14 +17,6 @@ var myPositions = [];
 var userChoice;
 var maxGames = maxNumber - numberOfBombs;
 var isBombFind = false;
-// for (var i = 0; i < numberOfBombs; i++) {
-//     var bomb = Math.floor((Math.random() * 100) + 1);
-//     if (!bombContainer.includes(bomb)) {
-//         bombContainer.push(bomb);
-//         console.log(bomb);
-//     }
-// }
-// console.log(bombContainer);
 
 //creo ciclo per numeri random da 1 a 100
 while (bombContainer.length < numberOfBombs) {
@@ -38,15 +30,19 @@ while (bombContainer.length < numberOfBombs) {
  //creo ciclo per scelta numero utente
  do {
     userChoice = parseInt(prompt("inserisci un numero"));
-    if (bombContainer.includes(userChoice)) {     // condizione se la scelta dell'utente è una mina ==>> la bomba è trovata
-        isBombFind = true;
+    if (!isNaN(userChoice)) {
+        if (bombContainer.includes(userChoice)) {     // condizione se la scelta dell'utente è una mina ==>> la bomba è trovata
+            isBombFind = true;
 
-        alert("the bomb is find and you have gained " + myPositions.length + " points");
-        // altrimenti controlla  se la scelta non è nell'array gia scelto se non è presente pusha nello stesso array
-    } else if (!myPositions.includes(userChoice)) {
-        myPositions.push(userChoice);
-    } else { // se è gia nell'array comunica che la sua scelta è già presente quindi di mettere un altro numero
-        alert("You have already inserted this number, pls insert another one");
+            alert("the bomb is find and you have gained " + myPositions.length + " points");
+            // altrimenti controlla  se la scelta non è nell'array gia scelto se non è presente pusha nello stesso array
+        } else if (!myPositions.includes(userChoice)) {
+            myPositions.push(userChoice);
+        } else { // se è gia nell'array comunica che la sua scelta è già presente quindi di mettere un altro numero
+            alert("You have already inserted this number, pls insert another one");
+        }
+    } else {
+        alert("insert a valid number")
     }
 
 } while (isBombFind == false && myPositions.length < maxGames);
