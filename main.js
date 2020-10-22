@@ -16,6 +16,7 @@ var bomb;
 var myPositions = [];
 var userChoice;
 var maxGames = maxNumber - numberOfBombs;
+var isBombFind = false;
 // for (var i = 0; i < numberOfBombs; i++) {
 //     var bomb = Math.floor((Math.random() * 100) + 1);
 //     if (!bombContainer.includes(bomb)) {
@@ -37,7 +38,14 @@ while (bombContainer.length < numberOfBombs) {
  //creo ciclo per scelta numero utente
  do {
     userChoice = parseInt(prompt("inserisci un numero"));
-    myPositions.push(userChoice);
+    if (bombContainer.includes(userChoice)) {
+        isBombFind = true;
+        alert("the bomb is find");
+    } else if (!myPositions.includes(userChoice)) {
+        myPositions.push(userChoice);
+    } else {
+        alert("You have already inserted this number, pls insert another one");
+    }
 
-} while (!bombContainer.includes(userChoice) || maxGames);
+} while (isBombFind == false);
 console.log(myPositions);
