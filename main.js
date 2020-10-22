@@ -20,7 +20,7 @@ var isBombFind = false;
 
 //creo ciclo per numeri random da 1 a 100
 while (bombContainer.length < numberOfBombs) {
-    bomb = Math.floor((Math.random() * 100) + 1);
+    bomb = Math.floor((Math.random() * maxNumber) + 1);
     if (!bombContainer.includes(bomb)) {
         bombContainer.push(bomb);
     }
@@ -30,10 +30,10 @@ while (bombContainer.length < numberOfBombs) {
  //creo ciclo per scelta numero utente
  do {
     userChoice = parseInt(prompt("inserisci un numero"));
-    if (!isNaN(userChoice)) {
+    //controllo se l'utente ha inserito un numero valido, numero maggiore di 0 e minore uguale a 100
+    if (!isNaN(userChoice) && userChoice > 0 && userChoice <= maxNumber) {
         if (bombContainer.includes(userChoice)) {     // condizione se la scelta dell'utente è una mina ==>> la bomba è trovata
             isBombFind = true;
-
             alert("the bomb is find and you have gained " + myPositions.length + " points");
             // altrimenti controlla  se la scelta non è nell'array gia scelto se non è presente pusha nello stesso array
         } else if (!myPositions.includes(userChoice)) {
