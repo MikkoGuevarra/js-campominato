@@ -12,14 +12,27 @@
 var maxNumber = 0;
 
 var level = parseInt(prompt("Scegli tra 0 1 2 il livello di difficoltà"));
-if (level == 2) {
-    maxNumber = 50;
 
-} else if (level == 1) {
-    maxNumber = 80;
-} else {
-    maxNumber = 100;
+switch (level) {
+    case 0:
+        maxNumber = 100;
+        break;
+    case 1:
+        maxNumber = 80;
+        break;
+    case 2:
+        maxNumber = 50;
+        break;
 }
+console.log(maxNumber);
+// if (level == 2) {
+//     maxNumber = 50;
+//
+// } else if (level == 1) {
+//     maxNumber = 80;
+// } else {
+//     maxNumber = 100;
+// }
 var numberOfBombs = 16;
 var bombContainer =  [];
 var bomb;
